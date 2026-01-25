@@ -129,10 +129,10 @@ const App = () => {
                 </a>
               </Typography>
               <Typography>
-                <a href="https://www.buymeacoffee.com/coderchef26" target="_blank" rel='noreferrer'>Buy me a Coffee</a>
+                <a href="https://buymeacoffee.com/alghaazi" target="_blank" rel='noreferrer'>Buy me a Coffee</a>
               </Typography>
               <Typography>
-                <a href="https://paypal.me/coderchef26" target="_blank" rel='noreferrer'>Support via PayPal</a>
+                <a href="https://www.paypal.me/alghaazi" target="_blank" rel='noreferrer'>Support via PayPal</a>
               </Typography>
             </div>
           </div>

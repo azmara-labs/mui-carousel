@@ -83,7 +83,7 @@ const items: Item[] = [
     name: "Support This Project",
     description: "Help us maintain and improve this library with your support!",
     color: "#C9A27E",
-    href: "https://www.buymeacoffee.com/coderchef26",
+    href: "https://buymeacoffee.com/alghaazi",
   },
 ];
 

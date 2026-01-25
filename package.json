@@ -27,11 +27,11 @@
   "funding": [
     {
       "type": "individual",
-      "url": "https://www.buymeacoffee.com/coderchef26"
+      "url": "https://buymeacoffee.com/alghaazi"
     },
     {
       "type": "paypal",
-      "url": "https://paypal.me/coderchef26"
+      "url": "https://www.paypal.me/alghaazi"
     }
   ],
   "main": "dist/esm/index.js",
