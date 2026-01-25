@@ -71,7 +71,7 @@ const items: Item[] = [
     name: "Azmara Technologies",
     description: "Professional web development and technology solutions based in New Zealand.",
     color: "#7D85B1",
-    href: "https://azmara.co.nz",
+    href: "https://azmara.io",
   },
   {
     name: "React Components",

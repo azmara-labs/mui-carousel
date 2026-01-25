@@ -407,7 +407,7 @@ The MIT License.
 
 **Original Author**: Learus (no longer actively maintaining)
 
-**Current Maintainer**: [Azmara Technologies](https://azmara.co.nz) ([Coder Chef](https://github.com/coderchef26))
+**Current Maintainer**: [Azmara Technologies](https://azmara.io) ([Coder Chef](https://github.com/coderchef26))
 
 ## Support
 

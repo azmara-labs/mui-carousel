@@ -51,7 +51,7 @@ const App = () => {
           <Typography variant="subtitle1" align="left">
             Current Maintainer: &nbsp;
             <a
-              href="https://azmara.co.nz"
+              href="https://azmara.io"
               target="_blank"
               rel="noreferrer"
             >
