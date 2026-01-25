@@ -74,10 +74,10 @@ export interface CarouselProps
      * It is advised to use Material UI Icons, but you could use any element (`<img/>`, `<div/>`, ...) you like. */
     PrevIcon?: ReactNode,
 
-    /** Gives full control of the nav buttons. Should return a button that uses the given `onClick`.  
-     * Works in tandem with all other customization options (`navButtonsProps`, `navButtonsWrapperProps`, `navButtonsAlwaysVisible`, `navButtonsAlwaysInvisible`, `fullHeightHover` ...).  
+    /** Gives full control of the nav buttons. Should return a button that uses the given `onClick`.
+     * Works in tandem with all other customization options (`navButtonsProps`, `navButtonsWrapperProps`, `navButtonsAlwaysVisible`, `navButtonsAlwaysInvisible`, `fullHeightHover` ...).
      * Refer to the [example section](README.md) for more information */
-    NavButton?: ({ onClick, next, className, style, prev }: { onClick: Function, className: string, style: React.CSSProperties, next: boolean, prev: boolean }) => ReactNode
+    NavButton?: ({ onClick, next, className, style, prev }: { onClick: (event: React.MouseEvent) => void, className: string, style: React.CSSProperties, next: boolean, prev: boolean }) => ReactNode
 
     /** Used to customize the indicators container/wrapper.  
      * Type: `{className: string, style: React.CSSProperties}` */
@@ -91,20 +91,26 @@ export interface CarouselProps
      * Type: `{className: string, style: React.CSSProperties}` */
     activeIndicatorIconButtonProps?: CarouselNavProps,
 
-    /** Function that is called **after** internal `setActive()` method. The `setActive()` method is called when the next and previous buttons are pressed, when an indicator is pressed, or when the `index` prop changes. First argument is the child **we are going to display**, while the second argument is the child **that was previously displayed**. Will be c */
-    onChange?: (now?: number, previous?: number) => any,
+    /** Function that is called **after** internal `setActive()` method. The `setActive()` method is called when the next and previous buttons are pressed, when an indicator is pressed, or when the `index` prop changes. First argument is the child **we are going to display**, while the second argument is the child **that was previously displayed**. */
+    onChange?: (now?: number, previous?: number) => void,
 
     /** Defines if `onChange` prop will be called when the carousel renders for the first time. In `componentDidMount` */
     changeOnFirstRender?: boolean,
 
     /** Function that is called **after** internal `next()` method. First argument is the child **we are going to display**, while the second argument is the child **that was previously displayed** */
-    next?: (now?: number, previous?: number) => any,
+    next?: (now?: number, previous?: number) => void,
 
     /** Function that is called **after** internal `prev()` method. First argument is the child **we are going to display**, while the second argument is the child **that was previously displayed** */
-    prev?: (now?: number, previous?: number) => any,
+    prev?: (now?: number, previous?: number) => void,
 
-    /** Defines the element inside the indicator `IconButton`s Refer to [MaterialUI Button Documentation](https://material-ui.com/components/buttons/) for more examples.  
+    /** Defines the element inside the indicator `IconButton`s Refer to [MaterialUI Button Documentation](https://material-ui.com/components/buttons/) for more examples.
      * It is advised to use Material UI Icons, but you could use any element (`<img/>`, `<div/>`, ...) you like.*/
     IndicatorIcon?: ReactNode,
+
+    /** Accessible label for the carousel region */
+    ariaLabel?: string,
+
+    /** Enable keyboard navigation (Arrow keys, Home, End). Default: true */
+    keyboardNavigation?: boolean,
 
 }

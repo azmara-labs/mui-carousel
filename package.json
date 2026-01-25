@@ -1,81 +1,72 @@
 {
-    "name": "mui-carousel-react",
-    "version": "1.0.4",
-    "description": "A Generic, extendible Carousel UI component for React using Material UI",
-    "keywords": [
-        "react",
-        "material",
-        "material ui",
-        "carousel",
-        "gallery"
-    ],
-    "homepage": "https://learus.github.io/mui-carousel-react",
-    "bugs": {
-        "url": "https://github.com/gazi786/mui-carousel/issues"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/gazi786/mui-carousel.git"
-    },
-    "license": "MIT",
-    "author": "AG",
-    "main": "dist/index.js",
-    "module": "dist/index.js",
-    "types": "dist/index.d.ts",
-    "files": [
-        "/dist"
-    ],
-    "babel": {
-        "presets": [
-            "react",
-            "env",
-            "stage-2"
-        ]
-    },
-    "scripts": {
-        "build": "npx rimraf dist && npm run build:cjs",
-        "build:cjs": "tsc --module commonjs --outDir dist",
-        "build_old": "NODE_ENV=production && npx rimraf dist && npx mkdirp dist && npx babel ./src --out-dir dist --copy-files"
-    },
-    "eslintConfig": {
-        "extends": "react-app"
-    },
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
-    },
-    "dependencies": {
-        "@emotion/react": "^11.14.0",
-        "@emotion/styled": "^11.14.0",
-        "@mui/icons-material": "^6.4.8",
-        "@mui/material": "^6.4.8",
-        "@mui/system": "^6.4.8",
-        "framer-motion": "^12.6.0"
-    },
-    "devDependencies": {
-        "babel-cli": "^6.26.0",
-        "babel-preset-env": "^1.7.0",
-        "babel-preset-react": "^6.24.1",
-        "babel-preset-stage-2": "^6.24.1",
-        "gh-pages": "^6.3.0",
-        "react-scripts": "^5.0.1",
-        "typescript": "^5.8.2"
-    },
-    "peerDependencies": {
-        "@emotion/react": "^11.4.1",
-        "@emotion/styled": "^11.3.0",
-        "@mui/icons-material": "^6.4.7",
-        "@mui/material": "^6.4.7",
-        "@mui/system": "^6.4.7",
-        "react": "^18.0.0 || ^19.0.0",
-        "react-dom": "^18.0.0 || ^19.0.0"
+  "name": "mui-carousel-react",
+  "version": "2.0.0",
+  "description": "A Generic, extendible Carousel UI component for React using Material UI v7 - responsive and dynamic for any screen or surface",
+  "keywords": [
+    "react",
+    "material",
+    "material ui",
+    "mui",
+    "carousel",
+    "gallery",
+    "slider",
+    "responsive",
+    "mobile",
+    "desktop"
+  ],
+  "homepage": "https://learus.github.io/mui-carousel-react",
+  "bugs": {
+    "url": "https://github.com/coderchef26/mui-carousel/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coderchef26/mui-carousel.git"
+  },
+  "license": "MIT",
+  "author": "AG",
+  "main": "dist/esm/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
+  "files": [
+    "/dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/esm/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/esm/index.js",
+      "default": "./dist/esm/index.js"
     }
+  },
+  "scripts": {
+    "build": "rimraf dist && tsc",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"No tests yet\" && exit 0"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/icons-material": "^7.3.7",
+    "@mui/material": "^7.3.7",
+    "@mui/system": "^7.3.7",
+    "framer-motion": "^12.29.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.9",
+    "@types/react-dom": "^19.2.3",
+    "rimraf": "^6.1.2",
+    "typescript": "^5.9.3"
+  },
+  "peerDependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^7.0.0",
+    "@mui/material": "^7.0.0",
+    "@mui/system": "^7.0.0",
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
 }

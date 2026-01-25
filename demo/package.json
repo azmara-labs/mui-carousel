@@ -2,52 +2,34 @@
   "name": "mui-carousel-react-demo",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://learus.github.io/mui-carousel-react",
+  "homepage": "https://coderchef26.dev/mui-carousel",
   "dependencies": {
-    "@emotion/babel-plugin": "^11.13.5",
     "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.0",
-    "@mui/icons-material": "^6.4.8",
-    "@mui/material": "^6.4.8",
-    "@mui/system": "^6.4.8",
-    "@types/react-dom": "^19.0.4",
-    "axios": "^1.8.4",
-    "framer-motion": "^12.5.0",
-    "mui-carousel-react": "^1.0.4",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-scripts": "^5.0.1"
-  },
-  "resolutions": {
-    "//": "See https://github.com/facebook/create-react-app/issues/11773",
-    "react-error-overlay": "6.0.9"
+    "@emotion/styled": "^11.14.1",
+    "@mui/icons-material": "^7.3.7",
+    "@mui/material": "^7.3.7",
+    "@mui/system": "^7.3.7",
+    "axios": "^1.13.2",
+    "framer-motion": "^12.29.0",
+    "mui-carousel-react": "file:../",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "dev": "vite",
+    "start": "vite",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "deploy": "gh-pages -d dist",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^4.3.4",
     "gh-pages": "^6.3.0",
-    "sass": "^1.86.0",
-    "typescript": "^5.8.2"
+    "sass": "^1.97.3",
+    "typescript": "^5.9.3",
+    "vite": "^6.0.11"
   }
 }

@@ -31,7 +31,7 @@ export interface SanitizedCarouselProps extends CarouselProps
     fullHeightHover: boolean,
     navButtonsWrapperProps: SanitizedCarouselNavProps,
     navButtonsProps: SanitizedCarouselNavProps,
-    NavButton: (({ onClick, next, className, style, prev }: { onClick: Function; className: string; style: React.CSSProperties; next: boolean; prev: boolean; }) => ReactNode) | undefined,
+    NavButton: (({ onClick, next, className, style, prev }: { onClick: (event: React.MouseEvent) => void; className: string; style: React.CSSProperties; next: boolean; prev: boolean; }) => ReactNode) | undefined,
 
     NextIcon: ReactNode,
     PrevIcon: ReactNode,
@@ -42,10 +42,13 @@ export interface SanitizedCarouselProps extends CarouselProps
     activeIndicatorIconButtonProps: SanitizedCarouselNavProps,
     IndicatorIcon: ReactNode,
 
-    onChange: (now?: number, previous?: number) => any,
+    onChange: (now?: number, previous?: number) => void,
     changeOnFirstRender: boolean,
-    next: (now?: number, previous?: number) => any,
-    prev: (now?: number, previous?: number) => any
+    next: (now?: number, previous?: number) => void,
+    prev: (now?: number, previous?: number) => void,
+
+    ariaLabel: string,
+    keyboardNavigation: boolean,
 }
 
 export interface SanitizedCarouselNavProps extends CarouselNavProps
@@ -111,6 +114,9 @@ export const sanitizeProps = (props: CarouselProps): SanitizedCarouselProps =>
         changeOnFirstRender: props.changeOnFirstRender !== undefined ? props.changeOnFirstRender : false,
         next: props.next !== undefined ? props.next : () => { },
         prev: props.prev !== undefined ? props.prev : () => { },
+
+        ariaLabel: props.ariaLabel !== undefined ? props.ariaLabel : "Carousel",
+        keyboardNavigation: props.keyboardNavigation !== undefined ? props.keyboardNavigation : true,
 
     }
 }

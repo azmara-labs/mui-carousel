@@ -9,7 +9,7 @@ import
     StyledItemWrapper,
     StyledRoot
 } from './Styled';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 
 export const Carousel = (props: CarouselProps) =>
@@ -47,34 +47,8 @@ export const Carousel = (props: CarouselProps) =>
     }, sanitizedProps.interval)
 
 
-
-    const next = (event: any) =>
-    {
-        const { children, cycleNavigation } = sanitizedProps;
-
-        let last = Array.isArray(children) ? children.length - 1 : 0;
-        const nextActive = state.active + 1 > last ? (cycleNavigation ? 0 : state.active) : state.active + 1;
-
-        setNext(nextActive, true)
-
-        if (event)
-            event.stopPropagation();
-    }
-
-    const prev = (event: any) =>
-    {
-        const { children, cycleNavigation } = sanitizedProps;
-
-        let last = Array.isArray(children) ? children.length - 1 : 0;
-        const nextActive = state.active - 1 < 0 ? (cycleNavigation ? last : state.active) : state.active - 1;
-
-        setNext(nextActive, false)
-
-        if (event)
-            event.stopPropagation();
-    }
-
-    const setNext = (index: number, isNext: boolean, runCallbacks: boolean = true) =>
+    // Memoized setNext function - must be defined before next/prev
+    const setNext = useCallback((index: number, isNext?: boolean, runCallbacks: boolean = true) =>
     {
         const { onChange, children, strictIndexing } = sanitizedProps;
 
@@ -106,7 +80,33 @@ export const Carousel = (props: CarouselProps) =>
             prevActive: state.active,
             next: isNext
         })
-    }
+    }, [sanitizedProps, state.active])
+
+    const next = useCallback((event: any) =>
+    {
+        const { children, cycleNavigation } = sanitizedProps;
+
+        let last = Array.isArray(children) ? children.length - 1 : 0;
+        const nextActive = state.active + 1 > last ? (cycleNavigation ? 0 : state.active) : state.active + 1;
+
+        setNext(nextActive, true)
+
+        if (event)
+            event.stopPropagation();
+    }, [sanitizedProps, state.active, setNext])
+
+    const prev = useCallback((event: any) =>
+    {
+        const { children, cycleNavigation } = sanitizedProps;
+
+        let last = Array.isArray(children) ? children.length - 1 : 0;
+        const nextActive = state.active - 1 < 0 ? (cycleNavigation ? last : state.active) : state.active - 1;
+
+        setNext(nextActive, false)
+
+        if (event)
+            event.stopPropagation();
+    }, [sanitizedProps, state.active, setNext])
 
     const {
         children,
@@ -136,9 +136,48 @@ export const Carousel = (props: CarouselProps) =>
         indicatorIconButtonProps,
         activeIndicatorIconButtonProps,
         IndicatorIcon,
+
+        ariaLabel,
+        keyboardNavigation,
     } = sanitizedProps;
 
-    const showButton = (next = true) =>
+    const childrenLength = Array.isArray(children) ? children.length : 1;
+
+    // Keyboard navigation
+    useEffect(() => {
+        if (!keyboardNavigation) return;
+
+        const handleKeyDown = (e: KeyboardEvent) => {
+            switch(e.key) {
+                case 'ArrowLeft':
+                    e.preventDefault();
+                    prev(undefined);
+                    setPaused(true);
+                    break;
+                case 'ArrowRight':
+                    e.preventDefault();
+                    next(undefined);
+                    setPaused(true);
+                    break;
+                case 'Home':
+                    e.preventDefault();
+                    setNext(0, false);
+                    setPaused(true);
+                    break;
+                case 'End':
+                    e.preventDefault();
+                    const last = childrenLength - 1;
+                    setNext(last, true);
+                    setPaused(true);
+                    break;
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [keyboardNavigation, next, prev, setNext, childrenLength]);
+
+    const showButton = useCallback((next = true) =>
     {
         if (cycleNavigation) return true;
 
@@ -148,10 +187,50 @@ export const Carousel = (props: CarouselProps) =>
         if (!next && state.active === 0) return false;
 
         return true;
-    }   
+    }, [cycleNavigation, children, state.active])
+
+    // Memoize carousel items rendering
+    const carouselItems = useMemo(() => {
+        return Array.isArray(children) ?
+            children.map((child, index) =>
+            {
+                return (
+                    <CarouselItem
+                        key={`carousel-item${index}`}
+                        state={state}
+                        index={index}
+                        maxIndex={children.length - 1}
+                        child={child}
+                        animation={animation}
+                        duration={duration}
+                        swipe={swipe}
+                        next={next}
+                        prev={prev}
+                        height={height}
+                        setHeight={setChildrenHeight}
+                    />
+                )
+            })
+            :
+            <CarouselItem
+                key={`carousel-item0`}
+                state={state}
+                index={0}
+                maxIndex={0}
+                child={children}
+                animation={animation}
+                duration={duration}
+                height={height}
+                setHeight={setChildrenHeight}
+            />
+    }, [children, state, animation, duration, swipe, next, prev, height, setChildrenHeight])
 
     return (
         <StyledRoot
+            role="region"
+            aria-roledescription="carousel"
+            aria-label={ariaLabel}
+            tabIndex={keyboardNavigation ? 0 : undefined}
             sx={sx}
             className={className}
             onMouseOver={() => { stopAutoPlayOnHover && setPaused(true) }}
@@ -160,41 +239,27 @@ export const Carousel = (props: CarouselProps) =>
             onBlur={()=>{stopAutoPlayOnHover && setPaused(false)}}
             // style={{height: height}} // <-- number | undefined
         >
+            {/* Screen reader announcements */}
+            <div
+                style={{
+                    position: 'absolute',
+                    width: '1px',
+                    height: '1px',
+                    padding: 0,
+                    margin: '-1px',
+                    overflow: 'hidden',
+                    clip: 'rect(0, 0, 0, 0)',
+                    whiteSpace: 'nowrap',
+                    borderWidth: 0,
+                }}
+                aria-live="polite"
+                aria-atomic="true"
+            >
+                Item {state.active + 1} of {childrenLength}
+            </div>
+
             <StyledItemWrapper style={{ height: height ? height : childrenHeight }}>
-                {
-                    Array.isArray(children) ?
-                        children.map((child, index) =>
-                        {
-                            return (
-                                <CarouselItem
-                                    key={`carousel-item${index}`}
-                                    state={state}
-                                    index={index}
-                                    maxIndex={children.length - 1}
-                                    child={child}
-                                    animation={animation}
-                                    duration={duration}
-                                    swipe={swipe}
-                                    next={next}
-                                    prev={prev}
-                                    height={height}
-                                    setHeight={setChildrenHeight}
-                                />
-                            )
-                        })
-                        :
-                        <CarouselItem
-                            key={`carousel-item0`}
-                            state={state}
-                            index={0}
-                            maxIndex={0}
-                            child={children}
-                            animation={animation}
-                            duration={duration}
-                            height={height}
-                            setHeight={setChildrenHeight}
-                        />
-                }
+                {carouselItems}
             </StyledItemWrapper>
 
 

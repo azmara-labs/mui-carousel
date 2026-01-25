@@ -7,7 +7,7 @@ export interface IndicatorProps
     IndicatorIcon?: ReactNode,
     length: number,
     active: number,
-    press: Function,
+    press: (index: number, isNext?: boolean, runCallbacks?: boolean) => void,
     indicatorContainerProps: SanitizedCarouselNavProps,
     indicatorIconButtonProps: SanitizedCarouselNavProps,
     activeIndicatorIconButtonProps: SanitizedCarouselNavProps,

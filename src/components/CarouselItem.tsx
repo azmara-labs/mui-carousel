@@ -5,14 +5,75 @@ import
     MotionProps,
     PanInfo
 } from 'framer-motion';
-import React, { ReactNode, useCallback, useEffect, useRef } from 'react';
+import React, { ReactNode, useEffect, useRef } from 'react';
 import { StyledItem } from './Styled';
+
+// Animation variants - extracted as constants to prevent recreation on every render
+const SLIDE_VARIANTS = {
+    leftwardExit: {
+        x: '-100%',
+        opacity: 1,
+        zIndex: 0,
+    },
+    leftOut: {
+        x: '-100%',
+        opacity: 1,
+        display: 'none',
+        zIndex: 0,
+    },
+    rightwardExit: {
+        x: '100%',
+        opacity: 1,
+        zIndex: 0,
+    },
+    rightOut: {
+        x: '100%',
+        opacity: 1,
+        display: 'none',
+        zIndex: 0,
+    },
+    center: {
+        x: 0,
+        opacity: 1,
+        zIndex: 1,
+    },
+} as const;
+
+const FADE_VARIANTS = {
+    leftwardExit: {
+        x: 0,
+        opacity: 0,
+        zIndex: 0,
+    },
+    leftOut: {
+        x: 0,
+        opacity: 0,
+        display: 'none',
+        zIndex: 0,
+    },
+    rightwardExit: {
+        x: 0,
+        opacity: 0,
+        zIndex: 0,
+    },
+    rightOut: {
+        x: 0,
+        opacity: 0,
+        display: 'none',
+        zIndex: 0,
+    },
+    center: {
+        x: 0,
+        opacity: 1,
+        zIndex: 1,
+    },
+} as const;
 
 export interface CarouselItemProps
 {
     animation: 'fade' | 'slide',
-    next?: Function,
-    prev?: Function,
+    next?: (event: any) => void,
+    prev?: (event: any) => void,
     state: {
         active: number,
         prevActive: number,
@@ -24,13 +85,12 @@ export interface CarouselItemProps
     duration: number,
     child: ReactNode,
     height?: number | string,
-    setHeight: Function
+    setHeight: (height: number) => void
 }
 
 export const CarouselItem = ({ animation, next, prev, swipe, state, index, maxIndex, duration, child, height, setHeight }: CarouselItemProps) =>
 {
     const slide = animation === 'slide';
-    const fade = animation === 'fade';
 
     const dragProps: MotionProps = {
         drag: 'x',
@@ -39,8 +99,8 @@ export const CarouselItem = ({ animation, next, prev, swipe, state, index, maxIn
         {
             if (!swipe) return;
 
-            if (info.offset.x > 0) prev && prev();
-            else if (info.offset.x < 0) next && next();
+            if (info.offset.x > 0) prev && prev(event);
+            else if (info.offset.x < 0) next && next(event);
 
             event.stopPropagation();
         },
@@ -50,61 +110,29 @@ export const CarouselItem = ({ animation, next, prev, swipe, state, index, maxIn
 
     const divRef = useRef<any>(null);
 
-    const checkAndSetHeight = useCallback(() => {
-        if (index !== state.active) return;
-        if (!divRef.current) return;
-
-        if (divRef.current.offsetHeight === 0)
-        {
-            setTimeout(() => checkAndSetHeight(), 100);
-        }
-        else
-        {
-            setHeight(divRef.current.offsetHeight);
-        }
-    }, [setHeight, state.active, index, divRef])
-
-    // Set height on every child change
+    // Use ResizeObserver for efficient height tracking
     useEffect(() =>
     {
-        checkAndSetHeight();
-            
-    }, [checkAndSetHeight])
+        if (index !== state.active || !divRef.current) return;
 
-    const variants = {
-        leftwardExit: {
-            x: slide ? '-100%' : undefined,
-            opacity: fade ? 0 : undefined,
-            zIndex: 0,
-            // position: 'relative'
-        },
-        leftOut: {
-            x: slide ? '-100%' : undefined,
-            opacity: fade ? 0 : undefined,
-            display: 'none',
-            zIndex: 0,
-            // position: 'relative'
-        },
-        rightwardExit: {
-            x: slide ? '100%' : undefined,
-            opacity: fade ? 0 : undefined,
-            zIndex: 0,
-            // position: 'relative'
-        },
-        rightOut: {
-            x: slide ? '100%' : undefined,
-            opacity: fade ? 0 : undefined,
-            display: 'none',
-            zIndex: 0,
-            // position: 'relative'
-        },
-        center: {
-            x: 0,
-            opacity: 1,
-            zIndex: 1,
-            // position: 'relative'
-        },
-    };
+        const resizeObserver = new ResizeObserver((entries) => {
+            for (const entry of entries) {
+                const height = entry.contentRect.height;
+                if (height > 0) {
+                    setHeight(height);
+                }
+            }
+        });
+
+        resizeObserver.observe(divRef.current);
+
+        return () => {
+            resizeObserver.disconnect();
+        };
+    }, [index, state.active, setHeight])
+
+    // Select variant set based on animation type
+    const variants = slide ? SLIDE_VARIANTS : FADE_VARIANTS;
 
     // Handle animation directions and opacity given based on active, prevActive and this item's index
     const { active, next: isNext, prevActive } = state;
