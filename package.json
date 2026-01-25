@@ -14,7 +14,7 @@
     "mobile",
     "desktop"
   ],
-  "homepage": "https://learus.github.io/mui-carousel-react",
+  "homepage": "https://coderchef26.dev/mui-carousel",
   "bugs": {
     "url": "https://github.com/coderchef26/mui-carousel/issues"
   },
@@ -23,7 +23,17 @@
     "url": "git+https://github.com/coderchef26/mui-carousel.git"
   },
   "license": "MIT",
-  "author": "AG",
+  "author": "Azmara Technologies (Coder Chef)",
+  "funding": [
+    {
+      "type": "individual",
+      "url": "https://www.buymeacoffee.com/coderchef26"
+    },
+    {
+      "type": "paypal",
+      "url": "https://paypal.me/coderchef26"
+    }
+  ],
   "main": "dist/esm/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",

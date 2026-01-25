@@ -10,7 +10,7 @@ const SecondExample = () => {
 
   return (
     <div style={{ marginTop: "50px", color: "#494949" }}>
-      <Typography variant="h4">Example: Learus Projects (random)</Typography>
+      <Typography variant="h4">Example: Featured Projects</Typography>
       <br />
       <Carousel className="SecondExample" {...settings}>
         {items.map((item, index) => {
@@ -62,29 +62,28 @@ function Project({ item }: ProjectProps) {
 
 const items: Item[] = [
   {
-    name: "Lear Music Reader",
-    description: "A PDF Reader specially designed for musicians.",
+    name: "MUI Carousel React",
+    description: "A Generic, extendible carousel UI component for React using Material UI v7.",
     color: "#64ACC8",
-    href: "https://github.com/Learus/Lear-Music-Reader",
+    href: "https://github.com/coderchef26/mui-carousel",
   },
   {
-    name: "Hash Code 2019",
-    description:
-      "My Solution on the 2019 Hash Code by Google Slideshow problem.",
+    name: "Azmara Technologies",
+    description: "Professional web development and technology solutions based in New Zealand.",
     color: "#7D85B1",
-    href: "https://github.com/Learus/HashCode2019",
+    href: "https://azmara.co.nz",
   },
   {
-    name: "Terrio",
-    description: "A exciting mobile game game made in the Unity Engine.",
+    name: "React Components",
+    description: "High-quality, accessible, and performant React components for modern web apps.",
     color: "#CE7E78",
-    href: "https://play.google.com/store/apps/details?id=com.Brewery.Terrio",
+    href: "https://github.com/coderchef26",
   },
   {
-    name: "React Carousel",
-    description: "A Generic carousel UI component for React using material ui.",
+    name: "Support This Project",
+    description: "Help us maintain and improve this library with your support!",
     color: "#C9A27E",
-    href: "https://github.com/Learus/mui-carousel-react",
+    href: "https://www.buymeacoffee.com/coderchef26",
   },
 ];
 

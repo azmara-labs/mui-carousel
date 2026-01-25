@@ -9,7 +9,7 @@ Also provides interactible bullet indicators.
 
 ## Live Demo
 
-Take a look at this interactible [Live Demo](https://learus.github.io/mui-carousel-react)
+Take a look at this interactible [Live Demo](https://coderchef26.dev/mui-carousel)
 
 ## Installation
 
@@ -403,6 +403,17 @@ Giving the default styles in pseudo-code.
 
 The MIT License.
 
-## Original Author
+## Credits
 
-[Learus](https://learus.github.io)
+**Original Author**: Learus (no longer actively maintaining)
+
+**Current Maintainer**: [Azmara Technologies](https://azmara.co.nz) ([Coder Chef](https://github.com/coderchef26))
+
+## Support
+
+If you find this library useful, consider supporting its development:
+
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Support-orange?style=for-the-badge&logo=buy-me-a-coffee)](https://www.buymeacoffee.com/coderchef26)
+[![PayPal](https://img.shields.io/badge/PayPal-Donate-blue?style=for-the-badge&logo=paypal)](https://paypal.me/coderchef26)
+
+Your support helps maintain and improve this library!

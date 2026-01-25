@@ -139,7 +139,7 @@ const items: Item[] = [
         Image: "https://source.unsplash.com/featured/?washingmachine",
       },
       {
-        Name: "Learus Vacuum Cleaner",
+        Name: "ProClean Vacuum Cleaner",
         Image: "https://source.unsplash.com/featured/?vacuum,cleaner",
       },
     ],

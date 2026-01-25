@@ -13,7 +13,7 @@ const App = () => {
   const [stars, setStars] = useState<number>(0);
 
   useEffect(() => {
-    const url = "https://api.github.com/repos/gazi786/mui-carousel";
+    const url = "https://api.github.com/repos/coderchef26/mui-carousel";
     axios
       .get(url)
       .then((res) => res.data)
@@ -44,26 +44,28 @@ const App = () => {
           </div>
 
           <Typography variant="subtitle1" align="left">
-            Made by and Original Author &nbsp;
-            <a
-              href="https://github.com/learus"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Learus
-            </a>
+            Original Author: Learus (no longer actively maintaining)
           </Typography>
 
           <br />
           <Typography variant="subtitle1" align="left">
-            Further improvements and upgrades by &nbsp;
+            Current Maintainer: &nbsp;
             <a
-              href="https://github.com/gazi786"
+              href="https://azmara.co.nz"
               target="_blank"
               rel="noreferrer"
             >
-              Learus
+              Azmara Technologies
             </a>
+            &nbsp;(&nbsp;
+            <a
+              href="https://github.com/coderchef26"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Coder Chef
+            </a>
+            &nbsp;)
           </Typography>
           <div className="buttonContainer">
             <Button
@@ -71,7 +73,7 @@ const App = () => {
               variant="contained"
               className="github"
               component="a"
-              href="https://github.com/gazi786/mui-carousel.git"
+              href="https://github.com/coderchef26/mui-carousel"
               target="_blank"
               rel="noreferrer"
             >
@@ -110,7 +112,7 @@ const App = () => {
               <Typography variant="h4">Links</Typography>
               <Typography>
                 <a
-                  href="https://github.com/gazi786/mui-carousel/blob/master/README.md"
+                  href="https://github.com/coderchef26/mui-carousel/blob/main/README.md"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -119,16 +121,19 @@ const App = () => {
               </Typography>
               <Typography>
                 <a
-                  href="https://github.com/gazi786/mui-carousel/blob/master/CHANGELOG.md"
+                  href="https://github.com/coderchef26/mui-carousel/blob/main/CHANGELOG.md"
                   target="_blank"
                   rel="noreferrer"
                 >
                   Changelog
                 </a>
               </Typography>
-              {/* <Typography>
-                                <a href="https://www.buymeacoffee.com/Learus" target="_blank" rel='noreferrer'>Buy me a Coffee</a>
-                            </Typography> */}
+              <Typography>
+                <a href="https://www.buymeacoffee.com/coderchef26" target="_blank" rel='noreferrer'>Buy me a Coffee</a>
+              </Typography>
+              <Typography>
+                <a href="https://paypal.me/coderchef26" target="_blank" rel='noreferrer'>Support via PayPal</a>
+              </Typography>
             </div>
           </div>
 
