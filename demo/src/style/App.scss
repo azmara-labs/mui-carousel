@@ -1,10 +1,10 @@
-@import "global";
+@use './global';
 
 body {
     margin: 0;
 }
 
-@include mobile_tablet {
+@include global.mobile_tablet {
     .root {
         padding: 40px 40px !important;
     }

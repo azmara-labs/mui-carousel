@@ -1,29 +1,25 @@
-@import 'global';
+@use './global';
 
 
-.SecondExample
-{
+.SecondExample {
     max-width: 500px;
 
-    .Project
-    {
+    .Project {
         max-width: 100%;
         position: relative;
         height: 300px;
         overflow: hidden;
         padding: 20px;
 
-        *
-        {
+        * {
             color: white;
         }
 
-        .CheckButton
-        {
+        .CheckButton {
             margin-top: 40px;
             color: white;
 
-            font-size: $header-font-size;
+            font-size: global.$header-font-size;
             border: 3px solid white;
             text-transform: capitalize;
 
