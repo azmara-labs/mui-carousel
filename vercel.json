@@ -1,8 +1,9 @@
 {
-  "buildCommand": "cd demo && npm install && npm run build",
-  "outputDirectory": "demo/dist",
+  "buildCommand": "npm install && npm run build",
+  "outputDirectory": "dist",
   "installCommand": "npm install",
-  "framework": null,
+  "framework": "vite",
+  "rootDirectory": "demo",
   "rewrites": [
     {
       "source": "/(.*)",
