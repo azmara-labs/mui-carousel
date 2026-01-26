@@ -37,3 +37,4 @@ demo/.env
 # Local development task tracking
 tasks.md
 tasks-master.md
+.vercel
