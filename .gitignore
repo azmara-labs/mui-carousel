@@ -38,3 +38,9 @@ demo/.env
 tasks.md
 tasks-master.md
 .vercel
+
+# Internal development documentation
+ANALYSIS-AND-IMPROVEMENTS.md
+TODO.md
+*-GUIDE.md
+SESSION-*.md
