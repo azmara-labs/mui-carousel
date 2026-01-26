@@ -8,7 +8,7 @@ export default defineConfig({
       jsxImportSource: '@emotion/react',
     }),
   ],
-  base: '/mui-carousel/',
+  base: '/',
   build: {
     outDir: 'dist',
     sourcemap: true,
