@@ -33,3 +33,7 @@ demo/.env
 
 #ide
 /.idea
+
+# Local development task tracking
+tasks.md
+tasks-master.md
