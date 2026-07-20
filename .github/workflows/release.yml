@@ -1,0 +1,78 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write # npm OIDC trusted publishing
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          registry-url: "https://registry.npmjs.org"
+          cache: "npm"
+
+      - name: Update npm for OIDC trusted publishing support
+        run: npm install -g npm@latest # trusted publishing needs npm >=11.5.1
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: "Build (tsc - also validates types)"
+        run: npm run build
+
+      - name: Test
+        run: npm test
+
+      - name: Check whether this version should be published
+        id: version-check
+        run: |
+          PKG_NAME=$(node -p "require('./package.json').name")
+          LOCAL_VERSION=$(node -p "require('./package.json').version")
+          echo "name=$PKG_NAME" >> "$GITHUB_OUTPUT"
+          echo "version=$LOCAL_VERSION" >> "$GITHUB_OUTPUT"
+
+          if [[ "$PKG_NAME" != @azmr/* ]]; then
+            echo "Package name '$PKG_NAME' is not under the @azmr scope - refusing to publish via this pipeline."
+            echo "should-publish=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          if npm view "$PKG_NAME@$LOCAL_VERSION" version 2>/dev/null; then
+            echo "should-publish=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "should-publish=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Publish
+        if: steps.version-check.outputs.should-publish == 'true'
+        env:
+          NPM_CONFIG_PROVENANCE: "true"
+        run: npm publish --access public
+
+      - name: Tag release
+        if: steps.version-check.outputs.should-publish == 'true'
+        run: |
+          git tag "v${{ steps.version-check.outputs.version }}"
+          git push origin "v${{ steps.version-check.outputs.version }}"
+
+      - name: Create GitHub Release
+        if: steps.version-check.outputs.should-publish == 'true'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: "v${{ steps.version-check.outputs.version }}"
+          generate_release_notes: true
