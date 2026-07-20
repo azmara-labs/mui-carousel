@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build (tsc - also validates types: noImplicitAny, strictNullChecks)
+      - name: "Build (tsc - also validates types: noImplicitAny, strictNullChecks)"
         run: npm run build
 
       - name: Test
