@@ -61,10 +61,15 @@ export const Carousel = (props: CarouselProps) => {
   );
 
   // componentDidMount & onIndexChange
+  // Deliberately depends only on the primitive index value, not sanitizedProps/setNext -
+  // sanitizeProps() returns a new object (with new default fn/JSX refs) on every render,
+  // so depending on it (or anything derived from it) here would re-fire this effect every
+  // render, call setState every time, and loop forever ("Maximum update depth exceeded").
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const { index, changeOnFirstRender } = sanitizedProps;
     setNext(index, true, changeOnFirstRender);
-  }, [sanitizedProps.index, sanitizedProps, setNext]);
+  }, [sanitizedProps.index]);
 
   const next = useCallback(
     (event: any) => {
