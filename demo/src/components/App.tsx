@@ -55,7 +55,7 @@ const App = () => {
               target="_blank"
               rel="noreferrer"
             >
-              Azmara Technologies
+              Azmara Labs
             </a>
             &nbsp;(&nbsp;
             <a

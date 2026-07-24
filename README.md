@@ -9,7 +9,7 @@ Also provides interactible bullet indicators.
 
 ## Live Demo
 
-Take a look at this interactible [Live Demo](https://coderchef26.dev/mui-carousel)
+Take a look at this interactible [Live Demo](https://www.muicarousel.azmara.io)
 
 ## Installation
 

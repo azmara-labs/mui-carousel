@@ -14,7 +14,7 @@
     "mobile",
     "desktop"
   ],
-  "homepage": "https://coderchef26.dev/mui-carousel",
+  "homepage": "https://www.muicarousel.azmara.io",
   "bugs": {
     "url": "https://github.com/azmara-labs/mui-carousel/issues"
   },
@@ -33,7 +33,7 @@
     }
   ],
   "license": "MIT",
-  "author": "Azmara Technologies (Coder Chef)",
+  "author": "Azmara Labs (Coder Chef)",
   "type": "commonjs",
   "exports": {
     ".": {
