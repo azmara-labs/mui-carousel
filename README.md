@@ -1,4 +1,4 @@
-# React Material UI Carousel [![npm version](https://img.shields.io/npm/v/mui-carousel-react.svg?style=flat)](https://www.npmjs.com/package/mui-carousel-react)
+# React Material UI Carousel [![npm version](https://img.shields.io/npm/v/@azmr/mui-carousel-react.svg?style=flat)](https://www.npmjs.com/package/@azmr/mui-carousel-react)
 
 ## Description
 
@@ -14,24 +14,23 @@ Take a look at this interactible [Live Demo](https://www.muicarousel.azmara.io)
 ## Installation
 
 ```shell
-npm install mui-carousel-react --save
+npm install @azmr/mui-carousel-react --save
 ```
 
 **Note:**
 
-You will need to have Material UI installed, in order to use this library/component
+You will need to have Material UI and Emotion installed, in order to use this library/component
 
 ```shell
-npm install @mui/material
-npm install @mui/icons-material
-npm install @mui/styles
+npm install @mui/material @mui/icons-material @mui/system
+npm install @emotion/react @emotion/styled
 ```
 
 ## Usage Example
 
 ```jsx
 import React from "react";
-import Carousel from "mui-carousel-react";
+import Carousel from "@azmr/mui-carousel-react";
 import { Paper, Button } from "@mui/material";
 
 function Example(props) {
