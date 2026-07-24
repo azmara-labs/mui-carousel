@@ -14,10 +14,11 @@ export default defineConfig({
     sourcemap: true,
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom'],
-          mui: ['@mui/material', '@mui/icons-material', '@mui/system'],
-          emotion: ['@emotion/react', '@emotion/styled'],
+        manualChunks(id) {
+          if (!id.includes('node_modules')) return;
+          if (id.includes('react-dom') || id.includes('/react/')) return 'vendor';
+          if (id.includes('@mui/material') || id.includes('@mui/icons-material') || id.includes('@mui/system')) return 'mui';
+          if (id.includes('@emotion/react') || id.includes('@emotion/styled')) return 'emotion';
         },
       },
     },

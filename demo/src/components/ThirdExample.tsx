@@ -1,7 +1,7 @@
 import { Paper, TextField, Typography } from "@mui/material";
 import { useState } from "react";
 import "../style/ThirdExample.scss";
-import Carousel from "mui-carousel-react";
+import Carousel from "@azmr/mui-carousel-react";
 
 export default function Test3() {
   const [height1, setHeight1] = useState(300);
