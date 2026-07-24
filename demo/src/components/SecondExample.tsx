@@ -68,7 +68,7 @@ const items: Item[] = [
     href: "https://github.com/azmara-labs/mui-carousel",
   },
   {
-    name: "Azmara Technologies",
+    name: "Azmara Labs",
     description: "Professional web development and technology solutions based in New Zealand.",
     color: "#7D85B1",
     href: "https://azmara.io",

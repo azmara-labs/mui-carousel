@@ -54,7 +54,7 @@ Once linked, every `git push` to main will automatically deploy to Vercel.
 
 After deployment, your demo will be available at:
 - Vercel URL: `https://mui-carousel-<hash>.vercel.app`
-- Custom domain: `https://coderchef26.dev/mui-carousel` (after domain setup)
+- Custom domain: `https://www.muicarousel.azmara.io` (after domain setup)
 
 ## Deploy to GitHub Pages (Alternative)
 
