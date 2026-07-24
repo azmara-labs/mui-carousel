@@ -13,7 +13,7 @@ const App = () => {
   const [stars, setStars] = useState<number>(0);
 
   useEffect(() => {
-    const url = "https://api.github.com/repos/coderchef26/mui-carousel";
+    const url = "https://api.github.com/repos/azmara-labs/mui-carousel";
     axios
       .get(url)
       .then((res) => res.data)
@@ -73,7 +73,7 @@ const App = () => {
               variant="contained"
               className="github"
               component="a"
-              href="https://github.com/coderchef26/mui-carousel"
+              href="https://github.com/azmara-labs/mui-carousel"
               target="_blank"
               rel="noreferrer"
             >
@@ -85,7 +85,7 @@ const App = () => {
               variant="contained"
               className="npm"
               component="a"
-              href="https://www.npmjs.com/package/mui-carousel-react"
+              href="https://www.npmjs.com/package/@azmr/mui-carousel-react"
               target="_blank"
               rel="noreferrer"
             >
@@ -112,7 +112,7 @@ const App = () => {
               <Typography variant="h4">Links</Typography>
               <Typography>
                 <a
-                  href="https://github.com/coderchef26/mui-carousel/blob/main/README.md"
+                  href="https://github.com/azmara-labs/mui-carousel/blob/main/README.md"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -121,7 +121,7 @@ const App = () => {
               </Typography>
               <Typography>
                 <a
-                  href="https://github.com/coderchef26/mui-carousel/blob/main/CHANGELOG.md"
+                  href="https://github.com/azmara-labs/mui-carousel/blob/main/CHANGELOG.md"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -146,10 +146,10 @@ const App = () => {
                 color: DemoTheme.palette.primary.main,
               }}
             >
-              # Latest Release (Version 1 using MUI v6 and framer-motion)
+              # Latest Release (Version 3 using MUI v9 and framer-motion)
             </Typography>
             <Typography style={{ fontFamily: "monospace" }}>
-              npm install mui-carousel-react
+              npm install @azmr/mui-carousel-react
             </Typography>
           </div>
 

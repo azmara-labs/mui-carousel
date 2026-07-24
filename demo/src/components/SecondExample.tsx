@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Carousel from "mui-carousel-react";
+import Carousel from "@azmr/mui-carousel-react";
 import { Paper, Button, Typography } from "@mui/material";
 
 import "../style/SecondExample.scss";
@@ -63,9 +63,9 @@ function Project({ item }: ProjectProps) {
 const items: Item[] = [
   {
     name: "MUI Carousel React",
-    description: "A Generic, extendible carousel UI component for React using Material UI v7.",
+    description: "A Generic, extendible carousel UI component for React using Material UI v9.",
     color: "#64ACC8",
-    href: "https://github.com/coderchef26/mui-carousel",
+    href: "https://github.com/azmara-labs/mui-carousel",
   },
   {
     name: "Azmara Technologies",

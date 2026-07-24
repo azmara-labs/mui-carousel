@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Settings, { DefaultSettingsT, SettingsT } from "./Settings";
-import Carousel from "mui-carousel-react";
+import Carousel from "@azmr/mui-carousel-react";
 import "../style/Example.scss";
 
 import {
