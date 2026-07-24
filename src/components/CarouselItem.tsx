@@ -138,7 +138,7 @@ export const CarouselItem = ({
 
   // Handle animation directions and opacity given based on active, prevActive and this item's index
   const { active, next: isNext, prevActive } = state;
-  let animate = "center";
+  let animate: string;
   if (index === active) animate = "center";
   else if (index === prevActive) {
     animate = isNext ? "leftwardExit" : "rightwardExit";
