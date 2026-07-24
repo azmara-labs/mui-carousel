@@ -1,14 +1,14 @@
-import { CarouselItem } from './CarouselItem';
+import { CarouselItem } from './CarouselItem.js';
 import { CarouselProps } from './types';
-import { Indicators } from './Indicators';
-import { sanitizeProps, useInterval } from './util';
+import { Indicators } from './Indicators.js';
+import { sanitizeProps, useInterval } from './util.js';
 import
 {
     StyledButtonWrapper,
     StyledIconButton,
     StyledItemWrapper,
     StyledRoot
-} from './Styled';
+} from './Styled.js';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 

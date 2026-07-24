@@ -1,5 +1,5 @@
 import React, { ReactNode, useCallback, useMemo } from "react";
-import { StyledFiberManualRecordIcon, StyledIndicatorIconButton, StyledIndicators } from "./Styled";
+import { StyledFiberManualRecordIcon, StyledIndicatorIconButton, StyledIndicators } from "./Styled.js";
 import { SanitizedCarouselNavProps } from "./util";
 
 export interface IndicatorProps

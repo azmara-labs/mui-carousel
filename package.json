@@ -1,6 +1,6 @@
 {
   "name": "@azmr/mui-carousel-react",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "A Generic, extendible Carousel UI component for React using Material UI v7 - responsive and dynamic for any screen or surface",
   "keywords": [
     "react",
@@ -34,12 +34,11 @@
   ],
   "license": "MIT",
   "author": "Azmara Labs (Coder Chef)",
-  "type": "commonjs",
+  "type": "module",
   "exports": {
     ".": {
       "types": "./dist/esm/index.d.ts",
       "import": "./dist/esm/index.js",
-      "require": "./dist/esm/index.js",
       "default": "./dist/esm/index.js"
     }
   },

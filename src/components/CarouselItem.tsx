@@ -6,7 +6,7 @@ import
     PanInfo
 } from 'framer-motion';
 import React, { ReactNode, useEffect, useRef } from 'react';
-import { StyledItem } from './Styled';
+import { StyledItem } from './Styled.js';
 
 // Animation variants - extracted as constants to prevent recreation on every render
 const SLIDE_VARIANTS = {
