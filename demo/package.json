@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://www.muicarousel.azmara.io",
   "dependencies": {
-    "@azmr/mui-carousel-react": "^3.0.2",
+    "@azmr/mui-carousel-react": "^3.0.3",
     "@emotion/cache": "^11.14.0",
     "@emotion/react": "^11.14.0",
     "@emotion/server": "^11.11.0",
