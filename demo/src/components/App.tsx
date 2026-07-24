@@ -152,6 +152,24 @@ const App = () => {
       <Example />
       <SecondExample />
       <Example3 />
+
+      <footer className="footer">
+        <div className="footerDots" aria-hidden="true">
+          <span />
+          <span />
+          <span />
+        </div>
+        <Typography variant="subtitle1" component="p">
+          &copy; {new Date().getFullYear()} Azmara Labs &mdash;{" "}
+          <a
+            href="https://github.com/azmara-labs/mui-carousel/blob/main/LICENSE.txt"
+            target="_blank"
+            rel="noreferrer"
+          >
+            MIT Licensed
+          </a>
+        </Typography>
+      </footer>
     </div>
   );
 };
