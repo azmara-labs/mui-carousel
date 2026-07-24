@@ -29,3 +29,25 @@ jobs:
 
       - name: Test
         run: npm test
+
+  demo:
+    name: Demo Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: "npm"
+          cache-dependency-path: demo/package-lock.json
+
+      - name: Install dependencies
+        working-directory: demo
+        run: npm ci
+
+      - name: Build
+        working-directory: demo
+        run: npm run build
