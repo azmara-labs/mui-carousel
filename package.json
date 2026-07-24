@@ -1,6 +1,6 @@
 {
   "name": "@azmr/mui-carousel-react",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "A Generic, extendible Carousel UI component for React using Material UI v9 - responsive and dynamic for any screen or surface",
   "keywords": [
     "react",
