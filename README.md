@@ -28,23 +28,31 @@ npm install @emotion/react @emotion/styled
 
 ## Usage Example
 
-```jsx
+<details open>
+<summary><b>TypeScript</b></summary>
+
+```tsx
 import React from "react";
 import Carousel from "@azmr/mui-carousel-react";
 import { Paper, Button } from "@mui/material";
 
-function Example(props) {
-  var items = [
-    {
-      name: "Random Name #1",
-      description: "Probably the most random thing you have ever seen!",
-    },
-    {
-      name: "Random Name #2",
-      description: "Hello World!",
-    },
-  ];
+interface ItemT {
+  name: string;
+  description: string;
+}
 
+const items: ItemT[] = [
+  {
+    name: "Random Name #1",
+    description: "Probably the most random thing you have ever seen!",
+  },
+  {
+    name: "Random Name #2",
+    description: "Hello World!",
+  },
+];
+
+function Example() {
   return (
     <Carousel>
       {items.map((item, i) => (
@@ -54,17 +62,66 @@ function Example(props) {
   );
 }
 
-function Item(props) {
+interface ItemProps {
+  item: ItemT;
+}
+
+function Item({ item }: ItemProps) {
   return (
     <Paper>
-      <h2>{props.item.name}</h2>
-      <p>{props.item.description}</p>
+      <h2>{item.name}</h2>
+      <p>{item.description}</p>
 
       <Button className="CheckButton">Check it out!</Button>
     </Paper>
   );
 }
 ```
+
+</details>
+
+<details>
+<summary><b>JavaScript</b></summary>
+
+```jsx
+import React from "react";
+import Carousel from "@azmr/mui-carousel-react";
+import { Paper, Button } from "@mui/material";
+
+const items = [
+  {
+    name: "Random Name #1",
+    description: "Probably the most random thing you have ever seen!",
+  },
+  {
+    name: "Random Name #2",
+    description: "Hello World!",
+  },
+];
+
+function Example() {
+  return (
+    <Carousel>
+      {items.map((item, i) => (
+        <Item key={i} item={item} />
+      ))}
+    </Carousel>
+  );
+}
+
+function Item({ item }) {
+  return (
+    <Paper>
+      <h2>{item.name}</h2>
+      <p>{item.description}</p>
+
+      <Button className="CheckButton">Check it out!</Button>
+    </Paper>
+  );
+}
+```
+
+</details>
 
 ## Next & Prev Usage
 
