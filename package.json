@@ -1,7 +1,7 @@
 {
   "name": "@azmr/mui-carousel-react",
-  "version": "3.0.1",
-  "description": "A Generic, extendible Carousel UI component for React using Material UI v7 - responsive and dynamic for any screen or surface",
+  "version": "3.0.2",
+  "description": "A Generic, extendible Carousel UI component for React using Material UI v9 - responsive and dynamic for any screen or surface",
   "keywords": [
     "react",
     "material",
@@ -50,14 +50,18 @@
   "scripts": {
     "build": "rimraf dist && tsc",
     "prepublishOnly": "npm run build",
-    "test": "echo \"No tests yet\" && exit 0"
+    "test": "echo \"No tests yet\" && exit 0",
+    "lint": "biome lint .",
+    "format": "biome format --write .",
+    "check": "biome check --write ."
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.1",
+    "@emotion/styled": "^11.14.0",
     "framer-motion": "^12.42.2"
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.5.5",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "rimraf": "^6.1.3",

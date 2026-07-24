@@ -17,6 +17,9 @@
 demo/build
 demo/dist
 demo/node_modules
+demo/.next
+demo/next-env.d.ts
+*.tsbuildinfo
 
 # misc
 .DS_Store
