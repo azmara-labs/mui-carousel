@@ -1,16 +1,11 @@
-import React, { useState } from "react";
-import Settings, { DefaultSettingsT, SettingsT } from "./Settings";
+"use client";
+
 import Carousel from "@azmr/mui-carousel-react";
+import { useState } from "react";
+import Settings, { DefaultSettingsT, type SettingsT } from "./Settings";
 import "../style/Example.scss";
 
-import {
-  Card,
-  CardContent,
-  CardMedia,
-  Typography,
-  Grid,
-  Button,
-} from "@mui/material";
+import { Button, Card, CardContent, CardMedia, Grid, Typography } from "@mui/material";
 
 const Example = () => {
   const [settings, setSettings] = useState<SettingsT>(DefaultSettingsT);
@@ -32,13 +27,7 @@ const Example = () => {
         // NextIcon='next'
       >
         {items.map((item, index) => {
-          return (
-            <Banner
-              item={item}
-              key={index}
-              contentPosition={item.contentPosition}
-            />
-          );
+          return <Banner item={item} key={index} contentPosition={item.contentPosition} />;
         })}
       </Carousel>
       <br />
@@ -61,15 +50,13 @@ interface BannerProps {
 }
 
 const Banner = (props: BannerProps) => {
-  const contentPosition = props.contentPosition
-    ? props.contentPosition
-    : "left";
+  const contentPosition = props.contentPosition ? props.contentPosition : "left";
   const totalItems: number = props.length ? props.length : 3;
   const mediaLength = totalItems - 1;
 
-  let items = [];
+  const items = [];
   const content = (
-    <Grid item xs={4} key="content">
+    <Grid size={4} key="content">
       <CardContent className="Content">
         <Typography className="Title">{props.item.Name}</Typography>
 
@@ -86,7 +73,7 @@ const Banner = (props: BannerProps) => {
     const item = props.item.Items[i];
 
     const media = (
-      <Grid item xs={4} key={item.Name}>
+      <Grid size={4} key={item.Name}>
         <CardMedia className="Media" image={item.Image} title={item.Name}>
           <Typography className="MediaCaption">{item.Name}</Typography>
         </CardMedia>

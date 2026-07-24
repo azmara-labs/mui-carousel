@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+"use client";
+
 import Carousel from "@azmr/mui-carousel-react";
-import { Paper, Button, Typography } from "@mui/material";
+import { Button, Paper, Typography } from "@mui/material";
+import { useState } from "react";
 
 import "../style/SecondExample.scss";
-import Settings, { DefaultSettingsT, SettingsT } from "./Settings";
+import Settings, { DefaultSettingsT, type SettingsT } from "./Settings";
 
 const SecondExample = () => {
   const [settings, setSettings] = useState<SettingsT>(DefaultSettingsT);

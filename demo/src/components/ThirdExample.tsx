@@ -1,3 +1,5 @@
+"use client";
+
 import { Paper, TextField, Typography } from "@mui/material";
 import { useState } from "react";
 import "../style/ThirdExample.scss";
@@ -23,8 +25,7 @@ export default function Test3() {
             className="HeightItem"
           >
             <h1>
-              {i + 1}. This item is{" "}
-              <span style={{ color: "cyan" }}>{item}px</span> high!
+              {i + 1}. This item is <span style={{ color: "cyan" }}>{item}px</span> high!
             </h1>
           </Paper>
         ))}
@@ -52,8 +53,8 @@ export default function Test3() {
 
       <br />
       <Typography style={{ marginTop: 20 }}>
-        Note: The carousel doesn't change height as the input values change, but
-        only when the active child changes.
+        Note: The carousel doesn't change height as the input values change, but only when the
+        active child changes.
       </Typography>
     </div>
     // </div>

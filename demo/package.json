@@ -4,32 +4,35 @@
   "private": true,
   "homepage": "https://www.muicarousel.azmara.io",
   "dependencies": {
+    "@azmr/mui-carousel-react": "^3.0.2",
+    "@emotion/cache": "^11.14.0",
     "@emotion/react": "^11.14.0",
+    "@emotion/server": "^11.11.0",
     "@emotion/styled": "^11.14.1",
     "@mui/icons-material": "^9.2.0",
     "@mui/material": "^9.2.0",
+    "@mui/material-nextjs": "^9.1.1",
     "@mui/system": "^9.2.0",
     "axios": "^1.18.1",
     "framer-motion": "^12.42.2",
-    "@azmr/mui-carousel-react": "^3.0.0",
+    "next": "^16.2.11",
     "react": "^19.2.8",
     "react-dom": "^19.2.8"
   },
   "scripts": {
-    "dev": "vite",
-    "start": "vite",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
-    "build": "vite build",
-    "preview": "vite preview"
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start"
   },
   "devDependencies": {
+    "@types/node": "^26.1.1",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^6.0.4",
-    "gh-pages": "^6.3.0",
     "sass": "^1.101.7",
-    "typescript": "^7.0.2",
-    "vite": "^8.1.5"
+    "typescript": "^6.0.3"
+  },
+  "overrides": {
+    "postcss": ">=8.5.12 <9",
+    "sharp": ">=0.35.0 <1"
   }
 }
