@@ -4,6 +4,14 @@
     height: 400px;
     position: relative;
 
+    // Grid items go from 3-across to stacked full-width below the sm breakpoint
+    // (see Example.tsx's <Grid size={{ xs: 12, sm: 4 }}>) - the fixed height above
+    // was sized for the 3-across layout, so give stacked items room instead of
+    // squeezing three ~100%-height children into the same 400px.
+    @include global.mobile {
+        height: 900px;
+    }
+
     .Media {
         background-color: white;
         height: 100%;

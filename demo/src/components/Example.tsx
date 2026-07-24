@@ -56,7 +56,7 @@ const Banner = (props: BannerProps) => {
 
   const items = [];
   const content = (
-    <Grid size={4} key="content">
+    <Grid size={{ xs: 12, sm: 4 }} key="content">
       <CardContent className="Content">
         <Typography className="Title">{props.item.Name}</Typography>
 
@@ -73,7 +73,7 @@ const Banner = (props: BannerProps) => {
     const item = props.item.Items[i];
 
     const media = (
-      <Grid size={4} key={item.Name}>
+      <Grid size={{ xs: 12, sm: 4 }} key={item.Name}>
         <CardMedia className="Media" image={item.Image} title={item.Name}>
           <Typography className="MediaCaption">{item.Name}</Typography>
         </CardMedia>
