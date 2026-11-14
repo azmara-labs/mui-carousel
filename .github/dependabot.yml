@@ -1,0 +1,35 @@
+# Weekly version updates, grouped to keep the noise down. Security updates are enabled in the
+# repo settings and still open straight away, one PR per advisory, outside these groups.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+      time: "08:00"
+      timezone: Pacific/Auckland
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: ci
+    groups:
+      actions:
+        patterns: ["*"]
+  - package-ecosystem: npm
+    directories: ["/", "/demo"]
+    schedule:
+      interval: weekly
+      day: monday
+      time: "08:00"
+      timezone: Pacific/Auckland
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: chore(deps)
+    groups:
+      minor-and-patch:
+        patterns: ["*"]
+        update-types: [minor, patch]
+      majors:
+        patterns: ["*"]
+        update-types: [major]
+        group-by: dependency-name
